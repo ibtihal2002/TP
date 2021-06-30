@@ -19,20 +19,7 @@ int palindrom(int ac, char *av)
 	return 1;	
 }
 
-struct node
-{
-	char ch;
-	struct node *next;
-};typedef struct node node;
 
-
-node add(char ch)
-{
-	node newnode=new node();
-	newnode.ch=ch;
-	newnode.next=NULL;
-	return newnode;
-}
 
 node string_linkedlist(char ch,node head)
 {
