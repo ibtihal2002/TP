@@ -94,3 +94,25 @@ void freeList(list L)
         free(temp);
     }
 }
+
+unsigned longueur(list L)
+{
+    unsigned l=0;
+    if(listeVide(L)==0)
+    {
+        list temp=L;
+        while(temp!=NULL)
+        {
+            l+=1;
+            temp=temp->next;
+        }
+    }
+    return l;
+}
+
+int listeVide(list L)
+{
+    if(L==NULL)
+        return 1;
+    return 0;
+}
