@@ -1,0 +1,24 @@
+#include<tp2_exo2.h>
+
+list create_node(int x)
+{
+    list c=(list)malloc(sizeof(node));
+    c->element=x;
+    c->next=NULL;
+    return c;
+}
+
+void add_node(list L,int x)
+{
+    list c=create_node(x);
+    list temp=L;
+    if(temp==NULL)
+        L=c;
+    while(temp->next!=NULL)
+    {
+            temp=temp->next;
+        temp->next=c;
+    }
+    return;
+}
+
