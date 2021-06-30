@@ -22,3 +22,75 @@ void add_node(list L,int x)
     return;
 }
 
+void remove_node(unsigned i, list *L)
+{
+    if(i==0)
+    {
+        liste temp=*L;
+        *L=(*L)->suivant;
+        free(temp);
+        return;
+    }
+    unsigned n=longueur(*L);
+    if(n==0 || i>=n)
+        return;
+    list temp=*L;
+    list temp_1=*L;
+    int j;
+    for(j=0;j<i;j++)
+    {
+        temp_1=temp;
+        temp=temp->next;
+    }
+    temp_1->next=temp->next;
+    free(temp);
+    return;
+}
+void printList(list L)
+{
+    if(L==NULL)
+        printf("[ ]");
+    else
+    {
+        printf("[");
+        list temp=L;
+        while(temp->next!=NULL)
+        {
+            printf("%d, ",temp->element);
+            temp=temp->next;
+        }
+        if(temp!=NULL)
+            printf("%d",temp->element);
+        printf("]\n");
+    }
+}
+
+list array_list(tab T)
+{
+    if(T.head==NULL)
+        return NULL;
+    list L=(list)malloc(sizeof(node));
+    L->element=T.head[0];
+    L->next=NULL;
+    list temp=L;
+    int i;
+    for(i=1;i<T.size;i++)
+    {
+        list C=(list)malloc(sizeof(node));
+        C->element=T.head[i];
+        C->next=NULL;
+        temp->next=C;
+        temp=C;
+    }
+    return L;
+}
+
+void freeList(list L)
+{
+    while(L!=NULL)
+    {
+        list temp=L;
+        L=L->next;
+        free(temp);
+    }
+}
